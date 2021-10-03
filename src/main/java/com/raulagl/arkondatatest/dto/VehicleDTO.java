@@ -8,19 +8,20 @@ import lombok.Setter;
 @Setter
 public class VehicleDTO {
 
-    private Integer id;
+    @JsonProperty( "_id" )
+    private Long idProvided;
 
     @JsonProperty( "_full_text" )
     private String  fullText;
 
-    @JsonProperty( "_id" )
+    @JsonProperty( "id" )
     private Integer beforeId;
 
     @JsonProperty( "date_updated" )
     private String dateUpdated;
 
     @JsonProperty("vehicle_id")
-    private Integer vehicleId;
+    private Long vehicleId;
 
     @JsonProperty("vehicle_label")
     private String vehicleLabel;
