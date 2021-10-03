@@ -84,17 +84,44 @@
       <artifactId>logback-classic</artifactId>
       <scope>runtime</scope>
     </dependency>
-    <dependency>
-      <groupId>org.sonatype.sisu</groupId>
-      <artifactId>sisu-inject-bean</artifactId>
-      <version>1.4.2</version>
-    </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
     <dependency>
       <groupId>org.modelmapper</groupId>
       <artifactId>modelmapper</artifactId>
       <version>2.4.0</version>
     </dependency>
+
+
+    <!-- start -   dependencies for database-->
+    <!-- https://mvnrepository.com/artifact/io.micronaut.data/micronaut-data-hibernate-jpa -->
+    <dependency>
+      <groupId>io.micronaut.data</groupId>
+      <artifactId>micronaut-data-hibernate-jpa</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.micronaut.sql/micronaut-hibernate-jpa -->
+    <dependency>
+      <groupId>io.micronaut.sql</groupId>
+      <artifactId>micronaut-hibernate-jpa</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.micronaut.sql</groupId>
+      <artifactId>micronaut-jdbc-hikari</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.13</version>
+    </dependency>
+    <!--    end - dependencies for database-->
+
   </dependencies>
 
   <build>
@@ -118,6 +145,14 @@
               <artifactId>lombok</artifactId>
               <version>1.18.12</version>
             </path>
+
+            <!-- https://mvnrepository.com/artifact/io.micronaut.data/micronaut-data-processor -->
+            <path>
+              <groupId>io.micronaut.data</groupId>
+              <artifactId>micronaut-data-processor</artifactId>
+              <version>3.1.0</version>
+            </path>
+
             <path>
               <groupId>io.micronaut</groupId>
               <artifactId>micronaut-http-validation</artifactId>
