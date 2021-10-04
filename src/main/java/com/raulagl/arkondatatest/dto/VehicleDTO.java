@@ -30,10 +30,10 @@ public class VehicleDTO {
     private Integer vehicleCurrentStatus;
 
     @JsonProperty("position_latitude")
-    private String positionLatitude;
+    private Double positionLatitude;
 
     @JsonProperty("position_longitude")
-    private String positionLongitude;
+    private Double positionLongitude;
 
     @JsonProperty("geographic_point")
     private String geographicPoint;

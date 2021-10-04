@@ -7,12 +7,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ResponseBusDTO {
+public class ResponseDataCDMXDTO<T> {
 
     @JsonProperty
     private String help;
     @JsonProperty
     private Boolean success;
     @JsonProperty
-    private DataBusDTO result;
+    private DataCDMXDTO<T> result;
 }

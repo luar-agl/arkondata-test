@@ -8,10 +8,10 @@ import java.util.List;
 
 @Getter
 @Setter
-public class DataBusDTO {
+public class DataCDMXDTO<T> {
 
     @JsonProperty
-    private List<VehicleDTO> records;
+    private List<T> records;
     @JsonProperty
     private String sql;
 
