@@ -15,11 +15,8 @@ public class TownHallDTO {
     @JsonProperty( "_full_text" )
     private String fullText;
 
-    @JsonProperty( "id" )
-    private Integer id;
-
     @JsonProperty( "nomgeo" )
-    private String nameTownHall;
+    private String name;
 
     @JsonProperty( "cve_mun" )
     private Integer keyMun;
