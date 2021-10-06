@@ -1,6 +1,5 @@
 package com.raulagl.arkondatatest.services.impl;
 
-import com.raulagl.arkondatatest.client.DataCDMXApiClient;
 import com.raulagl.arkondatatest.domain.TownHall;
 import com.raulagl.arkondatatest.dto.ResponseTownHallDTO;
 import com.raulagl.arkondatatest.dto.TownHallDTO;
@@ -15,13 +14,11 @@ import java.util.List;
 public class TownHallServiceImpl implements TownHallService {
 
     private final TownHallRepository townHallRepository;
-    private final DataCDMXApiClient dataCDMXApiClient;
+
 
     public TownHallServiceImpl(
-            TownHallRepository townHallRepository,
-            DataCDMXApiClient dataCDMXApiClient) {
+            TownHallRepository townHallRepository ) {
         this.townHallRepository = townHallRepository;
-        this.dataCDMXApiClient = dataCDMXApiClient;
     }
 
 
@@ -32,23 +29,13 @@ public class TownHallServiceImpl implements TownHallService {
     }
 
     @Override
-    public void loadDataTownHalls() {
-        long size = this.count();
-        if ( size == 0 ) {
-            this.dataCDMXApiClient
-                    .getDataOfTownHall()
-                    .getResult()
-                    .getRecords()
-                    .forEach( this::save );
-        }
-    }
-
-    @Override
     public long count() {
         return this.townHallRepository.count();
     }
 
-    private void save(TownHallDTO townHallDTO) {
+
+    @Override
+    public void save(TownHallDTO townHallDTO) {
         final TownHall townHall = ModelMapperUtils
                 .map( townHallDTO, TownHall.class );
         this.townHallRepository.save( townHall );

@@ -1,7 +1,7 @@
 package com.raulagl.arkondatatest.listener;
 
+import com.raulagl.arkondatatest.services.LoadDataTownHallService;
 import com.raulagl.arkondatatest.services.LoadDataVehicleService;
-import com.raulagl.arkondatatest.services.TownHallService;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.context.env.Environment;
 import io.micronaut.context.event.StartupEvent;
@@ -18,14 +18,14 @@ class LoaderListener {
 
 
 
-    private final TownHallService townHallService;
+    private final LoadDataTownHallService loadDataTownHallService;
     private final LoadDataVehicleService loadDataVehicleService;
 
     LoaderListener(
-            LoadDataVehicleService loadDataVehicleService,
-            TownHallService townHallService) {
+            LoadDataTownHallService loadDataTownHallService,
+            LoadDataVehicleService loadDataVehicleService ) {
+        this.loadDataTownHallService = loadDataTownHallService;
         this.loadDataVehicleService = loadDataVehicleService;
-        this.townHallService = townHallService;
     }
 
 
@@ -33,7 +33,7 @@ class LoaderListener {
     @EventListener
     public void loadDataOfCDMX(final StartupEvent event) {
         log.info("Loading data at startup " + event);
-        this.townHallService.loadDataTownHalls();
+        this.loadDataTownHallService.loadDataTownHalls();
         this.loadDataVehicleService.loadDataVehicles();
     }
 
