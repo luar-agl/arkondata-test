@@ -33,12 +33,14 @@ public class TownHallServiceImpl implements TownHallService {
 
     @Override
     public void loadDataTownHalls() {
-
-        this.dataCDMXApiClient
-                .getDataOfTownHall()
-                .getResult()
-                .getRecords()
-                .forEach( this::save );
+        long size = this.count();
+        if ( size == 0 ) {
+            this.dataCDMXApiClient
+                    .getDataOfTownHall()
+                    .getResult()
+                    .getRecords()
+                    .forEach( this::save );
+        }
     }
 
     @Override
