@@ -1,10 +1,10 @@
 package com.raulagl.arkondatatest.services;
 
-import com.raulagl.arkondatatest.dto.VehicleDTO;
+import com.raulagl.arkondatatest.dto.ResponseVehicleDTO;
 
 import java.util.List;
 
 public interface VehicleService {
 
-    List<VehicleDTO> getAllVehiclesAvailable();
+    List<ResponseVehicleDTO> getAllVehiclesAvailable();
 }

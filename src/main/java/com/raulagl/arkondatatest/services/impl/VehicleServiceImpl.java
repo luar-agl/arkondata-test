@@ -1,7 +1,7 @@
 package com.raulagl.arkondatatest.services.impl;
 
 import com.raulagl.arkondatatest.domain.Vehicle;
-import com.raulagl.arkondatatest.dto.VehicleDTO;
+import com.raulagl.arkondatatest.dto.ResponseVehicleDTO;
 import com.raulagl.arkondatatest.mapper.util.ModelMapperUtils;
 import com.raulagl.arkondatatest.repositories.VehicleRepository;
 import com.raulagl.arkondatatest.services.VehicleService;
@@ -19,9 +19,9 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public List<VehicleDTO> getAllVehiclesAvailable() {
+    public List<ResponseVehicleDTO> getAllVehiclesAvailable() {
         List<Vehicle> vehicles = this.vehicleRepository.findByVehicleCurrentStatus( 1 );
-        return ModelMapperUtils.mapAll( vehicles, VehicleDTO.class );
+        return ModelMapperUtils.mapAll( vehicles, ResponseVehicleDTO.class );
     }
 }
 
