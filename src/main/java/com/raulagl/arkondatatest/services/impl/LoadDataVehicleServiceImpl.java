@@ -24,13 +24,13 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Singleton
-public class LoadVehicleServiceImpl implements LoadDataVehicleService {
+public class LoadDataVehicleServiceImpl implements LoadDataVehicleService {
 
     private final VehicleService vehicleService;
     private final DataCDMXApiClient dataCDMXApiClient;
     private final TownHallRepository townHallRepository;
 
-    public LoadVehicleServiceImpl(
+    public LoadDataVehicleServiceImpl(
             VehicleService vehicleService,
             DataCDMXApiClient dataCDMXApiClient,
             TownHallRepository townHallRepository) {
