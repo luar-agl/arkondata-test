@@ -7,4 +7,6 @@ import java.util.List;
 public interface VehicleService {
 
     List<ResponseVehicleDTO> getAllVehiclesAvailable();
+
+    List<ResponseVehicleDTO> getAllVehiclesByTownHall( Long id );
 }

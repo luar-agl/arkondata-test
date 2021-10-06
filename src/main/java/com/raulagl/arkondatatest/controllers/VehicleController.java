@@ -17,9 +17,24 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
+    /**
+     * in charge of get all available units
+     * @return List<ResponseVehicleDTO>
+     */
     @Get( value = "/available" )
     public List<ResponseVehicleDTO> getVehiclesAvailable() {
         return this.vehicleService.getAllVehiclesAvailable();
+    }
+
+    /**
+     *
+     * @param id
+     * in charge of get all units that have been within a town hall
+     * @return List<ResponseVehicleDTO>
+     */
+    @Get( value = "/findByTownHall/{id}" )
+    public List<ResponseVehicleDTO> getVehiclesByTownHall(Long id) {
+        return this.vehicleService.getAllVehiclesByTownHall( id );
     }
 
 }

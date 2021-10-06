@@ -23,5 +23,11 @@ public class VehicleServiceImpl implements VehicleService {
         List<Vehicle> vehicles = this.vehicleRepository.findByVehicleCurrentStatus( 1 );
         return ModelMapperUtils.mapAll( vehicles, ResponseVehicleDTO.class );
     }
+
+    @Override
+    public List<ResponseVehicleDTO> getAllVehiclesByTownHall(Long id) {
+        List<Vehicle> vehicles = this.vehicleRepository.findByTownHallId( id );
+        return ModelMapperUtils.mapAll( vehicles, ResponseVehicleDTO.class );
+    }
 }
 
