@@ -120,7 +120,14 @@
       <artifactId>postgresql</artifactId>
       <version>42.2.13</version>
     </dependency>
-    <!--    end - dependencies for database-->
+
+
+    <dependency>
+        <groupId>io.micronaut.flyway</groupId>
+        <artifactId>micronaut-flyway</artifactId>
+     </dependency>
+
+      <!--    end - dependencies for database-->
 
   </dependencies>
 
