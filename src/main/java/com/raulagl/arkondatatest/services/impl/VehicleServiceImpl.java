@@ -45,5 +45,11 @@ public class VehicleServiceImpl implements VehicleService {
     public Optional<Vehicle> findByIdProvided(Long idProvided) {
         return this.vehicleRepository.findByIdProvided( idProvided );
     }
+
+    @Override
+    public List<ResponseVehicleDTO> findLocationsByVehicleId(Long vehicleId) {
+        List<Vehicle> vehicles = this.vehicleRepository.findByVehicleId( vehicleId );
+        return ModelMapperUtils.mapAll( vehicles, ResponseVehicleDTO.class );
+    }
 }
 

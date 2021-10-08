@@ -17,4 +17,6 @@ public interface VehicleService {
     void save( Vehicle vehicle );
 
     Optional<Vehicle> findByIdProvided(Long idProvided );
+
+    List<ResponseVehicleDTO> findLocationsByVehicleId(Long vehicleId );
 }

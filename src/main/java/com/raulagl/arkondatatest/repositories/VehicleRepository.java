@@ -34,4 +34,11 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
      * @return Optional<Vehicle>
      */
     Optional<Vehicle> findByIdProvided( Long idProvided );
+
+    /**
+     * @param vehicleId
+     * in charge of return a list of locations given the vehicle id
+     * @return List<Vehicle>
+     */
+    List<Vehicle> findByVehicleId( Long vehicleId );
 }

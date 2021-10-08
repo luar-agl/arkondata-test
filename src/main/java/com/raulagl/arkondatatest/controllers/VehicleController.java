@@ -28,13 +28,24 @@ public class VehicleController {
 
     /**
      *
-     * @param id
+     * @param townHallId
      * in charge of get all units that have been within a town hall
      * @return List<ResponseVehicleDTO>
      */
-    @Get( value = "/findByTownHall/{id}" )
-    public List<ResponseVehicleDTO> getVehiclesByTownHall(Long id) {
-        return this.vehicleService.getAllVehiclesByTownHall( id );
+    @Get( value = "/findByTownHall/{townHallId}" )
+    public List<ResponseVehicleDTO> getVehiclesByTownHall(Long townHallId) {
+        return this.vehicleService.getAllVehiclesByTownHall( townHallId );
+    }
+
+    /**
+     *
+     * @param vehicleId
+     * in charge of get a list of locations given the id of the vehicle
+     * @return List<ResponseVehicleDTO>
+     */
+    @Get( value = "/locations/{vehicleId}" )
+    public List<ResponseVehicleDTO> findLocationsByVehicleId(Long vehicleId) {
+        return this.vehicleService.findLocationsByVehicleId( vehicleId );
     }
 
 }
