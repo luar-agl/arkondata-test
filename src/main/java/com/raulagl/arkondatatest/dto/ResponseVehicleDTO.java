@@ -34,4 +34,6 @@ public class ResponseVehicleDTO {
     private Integer tripScheduleRelationship;
 
     private Integer tripRouteId;
+
+    private ResponseTownHallDTO townHall;
 }
