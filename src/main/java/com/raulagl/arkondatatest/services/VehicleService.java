@@ -4,6 +4,7 @@ import com.raulagl.arkondatatest.domain.Vehicle;
 import com.raulagl.arkondatatest.dto.ResponseVehicleDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface VehicleService {
 
@@ -14,4 +15,6 @@ public interface VehicleService {
     long count();
 
     void save( Vehicle vehicle );
+
+    Optional<Vehicle> findByIdProvided(Long idProvided );
 }

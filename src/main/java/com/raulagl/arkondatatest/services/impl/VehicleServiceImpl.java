@@ -8,6 +8,7 @@ import com.raulagl.arkondatatest.services.VehicleService;
 import jakarta.inject.Singleton;
 
 import java.util.List;
+import java.util.Optional;
 
 @Singleton
 public class VehicleServiceImpl implements VehicleService {
@@ -38,6 +39,11 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public void save(Vehicle vehicle) {
         this.vehicleRepository.save( vehicle );
+    }
+
+    @Override
+    public Optional<Vehicle> findByIdProvided(Long idProvided) {
+        return this.vehicleRepository.findByIdProvided( idProvided );
     }
 }
 

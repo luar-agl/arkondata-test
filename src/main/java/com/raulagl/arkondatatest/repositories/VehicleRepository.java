@@ -5,6 +5,7 @@ import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
@@ -24,4 +25,13 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
      * @return List<Vehicle>
      */
     List<Vehicle> findByTownHallId( Long townHallId );
+
+
+    /**
+     *
+     * @param idProvided
+     * in charge of search by id provided by api of public data cdmx
+     * @return Optional<Vehicle>
+     */
+    Optional<Vehicle> findByIdProvided( Long idProvided );
 }

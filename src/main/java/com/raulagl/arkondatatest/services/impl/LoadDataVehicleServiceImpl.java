@@ -40,6 +40,7 @@ public class LoadDataVehicleServiceImpl implements LoadDataVehicleService {
     }
 
 
+
     @Override
     public void loadDataVehicles() {
         long size = this.vehicleService.count();
@@ -57,6 +58,30 @@ public class LoadDataVehicleServiceImpl implements LoadDataVehicleService {
 
     }
 
+    @Override
+    public void loadDataVehiclesJob() {
+
+        List<TownHallPolygonDTO> townHallPolygons =  this.generatePolygons();
+
+        this.dataCDMXApiClient
+                .getDataOfBuses()
+                .getResult()
+                .getRecords()
+                .forEach( vehicleDTO -> validateNewVehicle( vehicleDTO, townHallPolygons ) );
+    }
+
+    private void validateNewVehicle(VehicleDTO vehicleDTO, List<TownHallPolygonDTO> townHallPolygons) {
+
+        Long idProvidedByApi = vehicleDTO.getIdProvided();
+
+        Optional<Vehicle> vehicleOptional = this.vehicleService.findByIdProvided( idProvidedByApi );
+
+        if ( !vehicleOptional.isPresent() ) {
+            this.saveVehicle( townHallPolygons, vehicleDTO );
+        }
+    }
+
+
     private void saveVehicle(List<TownHallPolygonDTO> townHallPolygons, VehicleDTO vehicleDTO) {
 
         Optional<TownHallPolygonDTO> townHallPolygon = this.getTownHall( townHallPolygons, vehicleDTO );
@@ -65,8 +90,9 @@ public class LoadDataVehicleServiceImpl implements LoadDataVehicleService {
             Vehicle vehicle = ModelMapperUtils.map( vehicleDTO, Vehicle.class );
             vehicle.setTownHall( townHall );
 
-            log.info( vehicle.getGeographicPoint() );
             this.vehicleService.save( vehicle );
+        } else {
+            log.info( "This point is not in any town hall: " + vehicleDTO.getGeographicPoint() );
         }
 
     }
