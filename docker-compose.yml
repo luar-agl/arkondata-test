@@ -1,0 +1,29 @@
+version: '3.1'
+services:
+  API:
+    image: 'arkon-data-test'
+    build: ./
+    ports:
+      - "9002:8080"
+    depends_on:
+      - PostgreSQL
+    environment:
+      - JDBC_URL=jdbc:postgresql://PostgreSQL:5432/arkon_data_pipeline
+      - JDBC_USER=postgres
+      - JDBC_PASSWORD= password
+      - JDBC_DRIVER=org.postgresql.Driver
+
+  PostgreSQL:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=arkon_data_pipeline
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
