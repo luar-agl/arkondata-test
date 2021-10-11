@@ -13,7 +13,7 @@
 ## Instructions for deploy:
 
 
-1.-  mvn install  
+1.-  mvn clean install -Dmaven.test.skip=true
 
 2.- docker build -t arkon-data-test .
 
